@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+python-dotenv
+psycopg2-binary
+email-validator
+python-jose[cryptography]
+passlib[bcrypt] 
+cryptography   # for PostgreSQL
+# for SQLite you don't need psycopg2; keep it if you will use Postgres
+pgvector
+sentence-transformers
