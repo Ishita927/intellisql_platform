@@ -12,7 +12,13 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL not set in .env")
 
-connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {"ssl": True}
+# connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {"ssl": True}
+if DATABASE_URL.startswith("sqlite"):
+    connect_args = {"check_same_thread": False}
+elif "localhost" in DATABASE_URL or "127.0.0.1" in DATABASE_URL:
+    connect_args = {}
+else:
+    connect_args = {"ssl": True}
 
 engine = create_async_engine(DATABASE_URL, echo=True, connect_args=connect_args)
 
