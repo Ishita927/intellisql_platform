@@ -33,7 +33,7 @@ app = FastAPI(title="intellisql backend", version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://your-app.vercel.app"],  # restrict in production
+    allow_origins=["http://localhost:3000", "https://intellisql-platform.vercel.app"],  # restrict in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
