@@ -1,4 +1,4 @@
-fastapi
+﻿fastapi
 uvicorn[standard]
 sqlmodel
 sqlalchemy
@@ -12,3 +12,4 @@ cryptography
 sqlglot
 openai
 numpy
+requests
