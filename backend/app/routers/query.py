@@ -40,6 +40,7 @@ from ..llm import generate_sql, analyze_question
 from ..sql_validator import validate_select_only, SQLValidationError
 from ..security import decrypt_value
 from .auth import get_current_user
+from ..routers.databases import _connect_args_for_host
 
 router = APIRouter(prefix="/query", tags=["query"])
 
