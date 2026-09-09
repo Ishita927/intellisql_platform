@@ -44,3 +44,8 @@ def encrypt_value(plain: str) -> str:
 
 def decrypt_value(token: str) -> str:
     return fernet.decrypt(token.encode()).decode()
+
+def connect_args_for_host(host: str) -> dict:
+    if "localhost" in host or "127.0.0.1" in host:
+        return {}
+    return {"ssl": True}

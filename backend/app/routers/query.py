@@ -165,9 +165,11 @@ async def _execute_sql_and_build_response(
         f"postgresql+asyncpg://{connection.username}:{encoded_password}"
         f"@{connection.host}:{connection.port}/{connection.database_name}"
     )
-    company_engine = create_async_engine(
-        company_db_url, connect_args={"command_timeout": QUERY_TIMEOUT_SECONDS}
-    )
+    # company_engine = create_async_engine(
+    #     company_db_url, connect_args={"command_timeout": QUERY_TIMEOUT_SECONDS}
+    # )
+    connect_args = {**connect_args_for_host(connection.host), "command_timeout": QUERY_TIMEOUT_SECONDS}
+company_engine = create_async_engine(company_db_url, connect_args=connect_args)
     try:
         async with company_engine.connect() as conn:
             await conn.execute(text("SET TRANSACTION READ ONLY"))
